@@ -3,8 +3,8 @@
 # Starting point for model training --> https://stackoverflow.com/questions/9413216/simple-digit-recognition-ocr-in-opencv-python
 # I also added an extra training with the existing cell values
 
-from preprocess import read_images
 from user_validation import check_images, check_values
+from preprocess import read_images
 from process import *
 import cv2 as cv
 import numpy as np
