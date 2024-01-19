@@ -4,6 +4,7 @@
 # I also added an extra training with the existing cell values
 
 from preprocess import read_images
+from user_validation import check_images, check_values
 from process import *
 import cv2 as cv
 import numpy as np
@@ -123,9 +124,13 @@ def create_model_from_input(boards: list) -> None:
     np.savetxt("generalresponses.data", responses)
 
 
-# Model creation
+# Reading the images
 images = read_images("raw_data", mode=1)  # Saving the images in grayscale
 images_c = read_images("raw_data", mode=0)  # Saving the images in color mode
+
+# Processing the images
 fixed_imgs = correct_images(images, images_c)  # Get the perspective corrected version of the raw images
+checked_images = check_images(images, fixed_imgs)  # Allowing user to view the detected boards and make any changes
 splitted_blocks = extract_blocks(fixed_imgs)  # Extracting the ind. sudoku block from the images
-create_model_from_input(splitted_blocks)  # Creating a model using the existing pitrain.png and block values
+int_values = process_cells(splitted_blocks)  # Detecting the int values of the cells and creating a new array with them
+checked_values = check_values(int_values, fixed_imgs)  # Allowing user to view the detected values and make any changes
