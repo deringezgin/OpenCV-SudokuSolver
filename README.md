@@ -1,4 +1,4 @@
-# openCV_sudoku
+# Sudoku Solver w/OpenCV
 An interactive sudoku solver implementation using OpenCV in Python.
 
 • Developed a Sudoku solver using OpenCV that goes beyond traditional solvers by allowing users to input any Sudoku board photo.
